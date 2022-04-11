@@ -18,9 +18,9 @@ class Translator {
   /**
    * @param {string} text
    * @param {'american-to-british' | 'british-to-american'} locale
-   * @returns {string}
+   * @returns Record<string, string>
    */
-  translate(text, locale = 'american-to-british') {
+  _match(text, locale = 'american-to-british') {
     const lowerCased = text.toLowerCase()
     const arrayfied = lowerCased.split(' ')
     const matches = {}
@@ -54,9 +54,7 @@ class Translator {
       }
     })
 
-    if (!Object.keys(matches).length) return text
-
-    return capitalize(replaceAll(text, matches))
+    return matches
   }
 
   /**
@@ -64,7 +62,29 @@ class Translator {
    * @param {'american-to-british' | 'british-to-american'} locale
    * @returns {string}
    */
-  translateWithHighlight(text, locale = 'american-to-british') {}
+  translate(text, locale = 'american-to-british') {
+    const matches = this._match(text, locale)
+    const translation = replaceAll(text, matches)
+
+    return capitalize(translation)
+  }
+
+  /**
+   * @param {string} text
+   * @param {'american-to-british' | 'british-to-american'} locale
+   * @returns {string}
+   */
+  translateWithHighlight(text, locale = 'american-to-british') {
+    const matches = this._match(text, locale)
+    const translation = capitalize(replaceAll(text, matches))
+    const searchValues = Object.values(matches)
+    const withHighlights = translation
+      .split(' ')
+      .map(word => (searchValues.includes(word.toLowerCase()) ? `<span class="highlight">${word}</span>` : word))
+      .join(' ')
+
+    return withHighlights
+  }
 }
 
 module.exports = Translator

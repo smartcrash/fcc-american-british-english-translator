@@ -20,6 +20,8 @@ const invert = object => {
  * @returns string
  */
 const replaceAll = (str, dict) => {
+  if (!Object.keys(dict).length) return str
+
   const regex = new RegExp(Object.keys(dict).join('|'), 'gi')
   const replacer = substring => dict[substring.toLowerCase()]
 

@@ -147,28 +147,28 @@ suite('Unit Tests', () => {
 
   test('Highlight translation in Mangoes are my favorite fruit.', () => {
     const text = 'Mangoes are my favorite fruit.'
-    const translation = translator.translate(text)
+    const translation = translator.translateWithHighlight(text)
 
     assert.equal(translation, 'Mangoes are my <span class="highlight">favourite</span> fruit.')
   })
 
   test('Highlight translation in I ate yogurt for breakfast.', () => {
     const text = 'I ate yogurt for breakfast.'
-    const translation = translator.translate(text)
+    const translation = translator.translateWithHighlight(text)
 
     assert.equal(translation, 'I ate <span class="highlight">yoghurt</span> for breakfast.')
   })
 
   test('Highlight translation in We watched the footie match for a while.', () => {
     const text = 'We watched the footie match for a while.'
-    const translation = translator.translate(text, 'british-to-american')
+    const translation = translator.translateWithHighlight(text, 'british-to-american')
 
     assert.equal(translation, 'We watched the <span class="highlight">soccer</span> match for a while.')
   })
 
   test('Highlight translation in Paracetamol takes up to an hour to work.', () => {
     const text = 'Paracetamol takes up to an hour to work.'
-    const translation = translator.translate(text)
+    const translation = translator.translateWithHighlight(text, 'british-to-american')
 
     assert.equal(translation, '<span class="highlight">Tylenol</span> takes up to an hour to work.')
   })
