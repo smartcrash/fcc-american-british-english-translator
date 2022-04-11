@@ -30,7 +30,7 @@ suite('Unit Tests', () => {
     const text = 'Can you toss this in the trashcan for me?'
     const translation = translator.translate(text)
 
-    assert.equal(translation, 'Can you toss this in the bin for me? ')
+    assert.equal(translation, 'Can you toss this in the bin for me?')
   })
 
   test('Translate The parking lot was full. to British English', () => {
@@ -51,7 +51,6 @@ suite('Unit Tests', () => {
     const text = 'To play hooky means to skip class or work.'
     const translation = translator.translate(text)
 
-    assert.equal(translation, 'No Mr. Bond, I expect you to die.')
     assert.equal(translation, 'To bunk off means to skip class or work.')
   })
 
@@ -115,7 +114,7 @@ suite('Unit Tests', () => {
     const text = "I've just got bits and bobs in my bum bag."
     const translation = translator.translate(text, 'british-to-american')
 
-    assert.equal(translation, "I've just got bits and bobs in my bum bag.")
+    assert.equal(translation, "I've just got odds and ends in my fanny pack.")
   })
 
   test('Translate The car boot sale at Boxted Airfield was called off. to American English', () => {
