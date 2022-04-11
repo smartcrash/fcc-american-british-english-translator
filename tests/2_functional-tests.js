@@ -14,7 +14,7 @@ suite('Functional Tests', () => {
   */
   test('Translation with text and locale fields: POST request to /api/translate', done => {
     const text = 'Paracetamol takes up to an hour to work.'
-    const locale = 'american-to-british'
+    const locale = 'british-to-american'
     const output = {
       text,
       translation: '<span class="highlight">Tylenol</span> takes up to an hour to work.',
@@ -120,9 +120,9 @@ suite('Functional Tests', () => {
   // If text requires no translation, return "Everything looks good to me!" for the translation value.
   */
   test('Translation with text that needs no translation: POST request to /api/translate', done => {
-    const text = 'Mangoes are my favourite fruit.'
+    const text = 'Paracetamol takes up to an hour to work.'
     const locale = 'american-to-british'
-    const output = { error: 'No text to translate' }
+    const output = { text, translation: 'Everything looks good to me!' }
 
     chai
       .request(server)

@@ -34,8 +34,13 @@ const replaceAll = (str, dict) => {
  */
 const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
 
+const isNull = value => value === null
+const isUndefined = value => value === undefined
+const isDefined = value => !isNull(value) && !isUndefined(value)
+
 module.exports = {
   invert,
   replaceAll,
   capitalize,
+  isDefined,
 }
