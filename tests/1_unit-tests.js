@@ -172,4 +172,12 @@ suite('Unit Tests', () => {
 
     assert.equal(translation, '<span class="highlight">Tylenol</span> takes up to an hour to work.')
   })
+
+  test('Handle the way titles/honorifics are abbreviated in American and British English', () => {
+    const text = 'Dr. Grosh will see you now.'
+    const locale = 'american-to-british'
+    const translation = translator.translateWithHighlight(text, locale)
+
+    assert.equal(translation, '<span class="highlight">Dr</span> Grosh will see you now.')
+  })
 })

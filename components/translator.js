@@ -77,7 +77,7 @@ class Translator {
   translateWithHighlight(text, locale = 'american-to-british') {
     const matches = this._match(text, locale)
     const translation = capitalize(replaceAll(text, matches))
-    const searchValues = Object.values(matches)
+    const searchValues = Object.values(matches).map(s => s.toLowerCase())
     const withHighlights = translation
       .split(' ')
       .map(word => (searchValues.includes(word.toLowerCase()) ? `<span class="highlight">${word}</span>` : word))
